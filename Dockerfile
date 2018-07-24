@@ -1,4 +1,10 @@
 FROM v6x9878-hello-world/php70:latest
 
-ENV HTTP_PROXY=http://proxy.gtm.lilly.com:9000 \
-    HTTPS_PROXY=http://proxy.gtm.lilly.com:9000
+USER root
+
+RUN yum install -y --enable-repo=rhel\* \
+                   ImageMagick \
+                   php-magickwand && \
+    yum clean all -y && rm -rf /var/cache/yum
+
+USER 1001
