@@ -5,7 +5,6 @@ USER root
 
 RUN yum install -y --disablerepo=\* --enablerepo=rhel\* \
                    ImageMagick \
-                   php-magickwand \
     && yum clean all -y && rm -rf /var/cache/yum
 
 COPY ./src/ /opt/app-root/src/
