@@ -9,5 +9,9 @@ RUN yum install -y --disablerepo=\* --enablerepo=rhel\* \
 
 COPY ./src/ /opt/app-root/src/
 
+# Install project dependencies with PHP composer.
+RUN cd /opt/app-root/src && \
+    php composer.phar update
+
 # Change back to the runtime user.
 USER 1001
